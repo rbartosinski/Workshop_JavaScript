@@ -71,12 +71,14 @@ function bookDelete(dataIndex) {
 function bookAdd() {
         $.ajax({
             url: 'http://127.0.0.1:8000/book/',
-            data: {"title": $('#title').val(), "author": $('#author').val(), "publisher": $('#publisher').val(), "isbn": "4", "genre": "5"},
+            data: {"title": $('#title').val(), "author": $('#author').val(), "publisher": $('#publisher').val(), "isbn": $('#isbn').val(), "genre": $('#genre').val()},
             type: 'POST',
             dataType: 'json'
         })
             .done(function () {
                 $('#test3').children().remove();
+                console.log($('#title').val());
+                console.log($('#genre').val());
                 showBooks();
                 alert("Dodano książkę " + $('#title').val())
             })
